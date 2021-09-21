@@ -10,7 +10,7 @@ export default function Pull2RefreshScreen() {
         setTimeout(() => {
             console.log('Ya terminé');
             setRefreshing(false);
-        }, 1500);
+        }, 4500);
     }
 
     return (
@@ -19,6 +19,11 @@ export default function Pull2RefreshScreen() {
                 <RefreshControl
                     refreshing={ refreshing }
                     onRefresh={ onRefresh }
+                    progressViewOffset= { 50 } //Baja verticalmente el indicador de pregreso
+                    progressBackgroundColor={ 'purple' } //Pone el fondo del indicador de progreso
+                    colors={['white','red','orange']} //Cambia los colores de la flecha que gira
+                    style={{backgroundColor:'purple'}} //Esta propiedad funciona en solo iOS y cambia el color del fondo de toda la parte de arriba donde aparece el indicador de progreso
+                    tintColor={'white'} //Esta propiedad funciona en solo iOS y cambia el color de la flecha que gira
                 />
             }
         >
