@@ -46,6 +46,7 @@ export default function SectionListScreen() {
                     <HeaderTitle title={'Total: ' + section.data.length}/>     
                 )}
                 SectionSeparatorComponent={()=><ItemSeparator/>}
+                
             />
         </View>
     )
