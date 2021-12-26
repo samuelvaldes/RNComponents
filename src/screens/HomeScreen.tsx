@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { styles } from '../theme/theme';
 import FlatListMenuItem from '../components/FlatListMenuItem';

@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
     globalMargin: {
         marginHorizontal: 20,
     },
+    itemText: {
+        fontSize: 20,
+    },
 });

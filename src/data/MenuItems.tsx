@@ -35,4 +35,24 @@ export const lista: MenuItem[] = [
         iconName: 'list-outline',
         component: 'SectionListScreen'
     },
+    {
+        name: 'Modal',
+        iconName: 'copy-outline',
+        component: 'ModalScreen'
+    },
+    {
+        name: 'InfinitScroll',
+        iconName: 'download-outline',
+        component: 'InfinitScroll'
+    },
+    {
+        name: 'Slides',
+        iconName: 'albums-outline',
+        component: 'SlidesScreen'
+    },
+    {
+        name: 'Change Theme',
+        iconName: 'contrast-outline',
+        component: 'ChangeThemeScreen'
+    },     
 ];

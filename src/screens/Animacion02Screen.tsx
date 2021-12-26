@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { View, StyleSheet, PanResponder, Animated } from 'react-native'
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export default function Animacion01Screen() {
     const pan = useRef(new Animated.ValueXY()).current;
+    const {setLightTheme, setDarkTheme, theme: { colors }} = useContext(ThemeContext);
 
     const panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -28,7 +30,7 @@ export default function Animacion01Screen() {
         <View style={styles.container}>
             <Animated.View 
                 {...panResponder.panHandlers}
-                style={[pan.getTranslateTransform(), styles.purpleBox]}>
+                style={[pan.getTranslateTransform(), styles.purpleBox, { backgroundColor: colors.primary}]}>
             </Animated.View>            
         </View>
     )
