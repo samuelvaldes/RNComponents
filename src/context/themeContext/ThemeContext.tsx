@@ -1,5 +1,6 @@
-import React, {createContext, useReducer} from 'react';
-import { lighTheme, themeReducer, ThemeState } from './themeReducer';
+import React, {createContext, useReducer, useEffect} from 'react';
+import { Appearance, AppState, useColorScheme } from 'react-native';
+import { lighTheme, darkTheme, themeReducer, ThemeState } from './themeReducer';
 
 interface ThemeContextProps {
     theme: ThemeState;
@@ -10,9 +11,26 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}: any) => {
+    const [theme, dispatch] = useReducer(themeReducer, (Appearance.getColorScheme() === 'light') ? lighTheme : darkTheme) //TODO: Leer el tema global del SO
 
+    //SOLO FUNCIONA EN iOS para cambiar el theme desde sistema operativo
+    // const colorScheme = useColorScheme();
+    // useEffect(() => {
+    //     (colorScheme==='light') ?
+    //         setLightTheme
+    //     :   setDarkTheme
+    // }, [colorScheme])
 
-    const [theme, dispatch] = useReducer(themeReducer, lighTheme) //TODO: Leer el tema global del SO
+    //ESTO FUNCIONA EN iOS y Android para para cambiar el theme desde sistema operativo
+    useEffect(() => {
+        AppState.addEventListener('change', (status)=>{
+            if (status === 'active') {
+                ( Appearance.getColorScheme() === 'light' ) 
+                ? setLightTheme() 
+                : setDarkTheme();
+            }
+        })
+    }, [])
 
     const setDarkTheme = () => {
         dispatch({ type: 'set_dark_theme' })

@@ -10,7 +10,7 @@ import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export default function InputTextScreen() {
 
-  const {theme: { colors }} = useContext(ThemeContext);
+  const {theme: { colors, currentTheme }} = useContext(ThemeContext);
 
   const { name, email, phone, isSuscribed, onChange} = formulario({
     name: '',
@@ -41,6 +41,7 @@ export default function InputTextScreen() {
             placeholder= {'name'}
             autoCapitalize={'words'}
             onChangeText={(value) => onChange('name', value)}
+            keyboardAppearance={currentTheme}//solo funciona en iOS
           />
           
           <TextInput
